@@ -28,7 +28,7 @@ accel.onclose = function(e) {
 };
 accel.onmessage = function(e) {
   var data = jQuery.parseJSON(e.data);
-  var value = data;
+  var value = data.d;
   value.x = parseFloat(value.x);
   value.y = parseFloat(value.y);
   value.z = parseFloat(value.z);
@@ -42,7 +42,7 @@ gyro.onopen = function() {
 };
 gyro.onmessage = function(e) {
   var data = jQuery.parseJSON(e.data);
-  var value = data;
+  var value = data.d;
   value.x = parseFloat(value.x);
   value.y = parseFloat(value.y);
   value.z = parseFloat(value.z);
@@ -56,7 +56,7 @@ mag.onopen = function() {
 };
 mag.onmessage = function(e) {
   var data = jQuery.parseJSON(e.data);
-  var value = data;
+  var value = data.d;
   value.x = parseFloat(value.x);
   value.y = parseFloat(value.y);
   value.z = parseFloat(value.z);
@@ -70,10 +70,10 @@ temperature.onopen = function() {
 };
 temperature.onmessage = function(e) {
   var data = jQuery.parseJSON(e.data);
-  sensorData.setReading("ambientTemp", parseFloat(data.ambient));
-  $("#ambientTemp").html("air/ambientTemp :: " + data.ambient);
-  sensorData.setReading("objectTemp", parseFloat(data.object));
-  $("#objectTemp").html("air/objectTemp :: " + data.object);
+  sensorData.setReading("ambientTemp", parseFloat(data.d.ambient));
+  $("#ambientTemp").html("air/ambientTemp :: " + data.d.ambient);
+  sensorData.setReading("objectTemp", parseFloat(data.d.object));
+  $("#objectTemp").html("air/objectTemp :: " + data.d.object);
   
 };
 
